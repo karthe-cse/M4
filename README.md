@@ -10,8 +10,24 @@ To write a C Program to perform the basic left shift operation for 44 integer nu
 5.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+
+int main() {
+    // Step 1 & 2: Assign values
+    int a = 44, b = 3;
+
+    // Step 3: Left shift a by 3 times
+    int result = a << b;  // same as a << 3
+
+    // Step 4: Display the result
+    printf("Result of %d << %d is: %d\n", a, b, result);
+
+    // Step 5: Stop the program
+    return 0;
+}
 
 ## OUTPUT
+Result of 44 << 3 is: 352
 
 
 
@@ -47,9 +63,32 @@ Write a C Program to check whether the two numbers are equal or not using simple
 5.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+
+int main() {
+    int num1, num2;
+
+    // Step 2: Read two numbers
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+
+    // Step 3 & 4: Compare and display result
+    if (num1 == num2) {
+        printf("Both are equal.\n");
+    } else {
+        printf("Both are not equal.\n");
+    }
+
+    // Step 5: Stop the program
+    return 0;
+}
 
 
 ## OUTPUT
+
+Enter two numbers: 10 10
+Both are equal.
+
            
 ## RESULT
 
@@ -70,8 +109,32 @@ Write a C Program to convert the given string into lowercase.
 5.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+#include <ctype.h>  // for tolower()
+
+int main() {
+    char str[100];
+
+    // Step 2: Read a string
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);  // safer than gets()
+
+    // Step 3: Convert string to lowercase
+    for (int i = 0; str[i] != '\0'; i++) {
+        str[i] = tolower(str[i]);
+    }
+
+    // Step 4: Display the result
+    printf("Lowercase string: %s", str);
+
+    // Step 5: Stop the program
+    return 0;
+}
+
 
 ## OUTPUT
+Enter a string: Hello World!
+Lowercase string: hello world!
 
 
 
@@ -95,8 +158,33 @@ Write a C Program to count the total number of words in a given string using do 
 6.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int count = 0;
+
+    // Step 2: Read a string
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Step 3 & 4: Loop through string and count spaces
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == ' ') {
+            count++;
+        }
+    }
+
+    // Step 5: Display the result
+    printf("Number of spaces: %d\n", count);
+
+    // Step 6: Stop the program
+    return 0;
+}
 
 ## OUTPUT
+Enter a string: Hello there, how are you?
+Number of spaces: 4
 
 
 
@@ -129,9 +217,55 @@ Step 7: After the loop, check the value of flag:
 Step 8: End the program.
 
 ## PROGRAM
+#include <stdio.h>
+
+int main() {
+    // Step 2: Declare variables
+    char c1[100], c2[100];
+    int flag = 0, i = 0;
+
+    // Step 3: Read the first string including spaces until newline
+    printf("Enter first string (can include spaces): ");
+    scanf("%[^\n]", c1);
+
+    // Consume leftover newline after first scanf
+    getchar();
+
+    // Step 4: Read the second string without spaces
+    printf("Enter second string (no spaces): ");
+    scanf("%s", c2);
+
+    // Step 5 & 6: Compare character by character
+    while (c1[i] != '\0' && c2[i] != '\0') {
+        if (c1[i] != c2[i]) {
+            flag = 1;  // Strings differ
+            break;
+        }
+        i++;
+    }
+
+    // Also check if both strings ended simultaneously
+    if (c1[i] != '\0' || c2[i] != '\0') {
+        flag = 1;  // Length mismatch
+    }
+
+    // Step 7: Print result based on flag
+    if (flag == 0) {
+        printf("strings are same\n");
+    } else {
+        printf("strings are not same\n");
+    }
+
+    // Step 8: End program
+    return 0;
+}
 
 
 ## OUTPUT
+Enter first string (can include spaces): hello
+Enter second string (no spaces): hello
+strings are same
+
  
 
 ## RESULT
